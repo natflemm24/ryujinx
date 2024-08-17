@@ -18,15 +18,15 @@
         <helpers:KeyValueConverter x:Key="Key" />
     </UserControl.Resources>
     <UserControl.Styles>
-        <Style Selector="StackPanel > StackPanel">
+        <Style Selector="StackPanel StackPanel">
             <Setter Property="Margin" Value="10, 0, 0, 0" />
             <Setter Property="Orientation" Value="Horizontal" />
         </Style>
-        <Style Selector="StackPanel > StackPanel > TextBlock">
+        <Style Selector="StackPanel StackPanel > TextBlock">
             <Setter Property="VerticalAlignment" Value="Center" />
             <Setter Property="Width" Value="230" />
         </Style>
-        <Style Selector="ToggleButton">
+        <Style Selector="ToggleButton, Button">
             <Setter Property="Width" Value="90" />
             <Setter Property="Height" Value="27" />
         </Style>
@@ -42,10 +42,11 @@
         VerticalScrollBarVisibility="Auto">
         <Border Classes="settings">
             <StackPanel
-                Name="SettingButtons"
                 Margin="10"
+                HorizontalAlignment="Stretch"
                 Orientation="Vertical"
-                Spacing="10">
+                Spacing="10"
+                Name="SettingButtons">
                 <TextBlock
                     Classes="h1"
                     Text="{ext:Locale SettingsTabHotkeysHotkeys}" />
@@ -103,6 +104,28 @@
                         <TextBlock Text="{Binding KeyboardHotkey.VolumeDown, Converter={StaticResource Key}}" />
                     </ToggleButton>
                 </StackPanel>
+                <ItemsControl ItemsSource="{Binding KeyboardHotkey.CycleControllers}"
+                    Name="CycleControllers">
+                    <ItemsControl.ItemsPanel>
+                        <ItemsPanelTemplate>
+                            <StackPanel
+                                Margin="0"
+                                Orientation="Vertical"
+                                Spacing="10" />
+                        </ItemsPanelTemplate>
+                    </ItemsControl.ItemsPanel>
+                    <ItemsControl.ItemTemplate>
+                        <DataTemplate>
+                            <StackPanel>
+                                <TextBlock Text="{Binding Player}" />
+                                <ToggleButton>
+                                    <TextBlock
+                                        Text="{Binding Hotkey, Converter={StaticResource Key}}" />
+                                </ToggleButton>
+                            </StackPanel>
+                        </DataTemplate>
+                    </ItemsControl.ItemTemplate>
+                </ItemsControl>
             </StackPanel>
         </Border>
    </ScrollViewer>

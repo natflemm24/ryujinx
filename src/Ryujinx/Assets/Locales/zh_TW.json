@@ -788,6 +788,7 @@
   "GraphicsScalingFilterBilinear": "雙線性 (Bilinear)",
   "GraphicsScalingFilterNearest": "近鄰性 (Nearest)",
   "GraphicsScalingFilterFsr": "FSR",
+  "GraphicsScalingFilterArea": "Area",
   "GraphicsScalingFilterLevelLabel": "日誌等級",
   "GraphicsScalingFilterLevelTooltip": "設定 FSR 1.0 銳化等級。越高越清晰。",
   "SmaaLow": "低階 SMAA",
